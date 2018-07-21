@@ -93,9 +93,8 @@ if (isset($_POST['changeAvatar'])){
         $size = $_FILES['image']['size'];
 
 // Allow certain file formats.
-        if (strtolower($ext) != "jpg" && strtolower($ext) != "png" && strtolower($ext) != "jpeg") {
+        if (strtolower($ext) != "jpg" && strtolower($ext) != "png" && strtolower($ext) != "jpeg" || substr_count($name, ".") > 1) {
             $imageError = "Only JPG, JPEG, & PNG files are allowed.";
-        }
     }
 
     // Set image if it exists

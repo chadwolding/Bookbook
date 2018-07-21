@@ -68,6 +68,16 @@ if (isset($_POST['edit'])){
         $image = '';
     }
 
+    // Get File info (image for new post).
+    $name = $_FILES['image']['name'];
+    $ext = pathinfo($name, PATHINFO_EXTENSION);
+    $size = $_FILES['image']['size'];
+
+// Allow certain file formats.
+    if(strtolower($ext) != "jpg" && strtolower($ext) != "png" && strtolower($ext) != "jpeg" || substr_count($name, ".") > 1) {
+        $imageError = "Only JPG, JPEG, & PNG files are allowed.";
+    }
+
 // Input validation
 // Validate title
     if (empty($title) || strlen($title) > 30){

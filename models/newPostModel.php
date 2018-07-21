@@ -5,8 +5,6 @@ if (isset($_POST['submit'])){
 // Get user id to save to database.
 $user_id = $_SESSION['uzzzzzer_id'];
 
-
-
 //Sanitize inputs
 $_POST = filter_var_array($_POST, FILTER_SANITIZE_STRING);
 
@@ -23,7 +21,7 @@ $ext = pathinfo($name, PATHINFO_EXTENSION);
 $size = $_FILES['image']['size'];
 
 // Allow certain file formats.
-if(strtolower($ext) != "jpg" && strtolower($ext) != "png" && strtolower($ext) != "jpeg") {
+if(strtolower($ext) != "jpg" && strtolower($ext) != "png" && strtolower($ext) != "jpeg" || substr_count($name, ".") > 1) {
     $imageError = "Only JPG, JPEG, & PNG files are allowed.";
 }
 

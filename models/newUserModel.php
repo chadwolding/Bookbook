@@ -59,7 +59,7 @@ if (isset($_POST['submit'])){
     }
 
     // Validate password
-    if (!preg_match('/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/', $password)){
+    if (!preg_match('/^(?=[^\d]*\d)(?=[A-Z\d ]*[^A-Z\d ]).{8,}$/i', $password)){
         $passwordError = 'Must be 8 characters long, contain a special character, and contain a number.';
     }
     elseif (strlen($password) > 30){
